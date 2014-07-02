@@ -5,14 +5,12 @@
 #include "globals.hh"
 #include <vector>
 
-
-
 class G4Event;
 
 class EventAction : public G4UserEventAction
 {
 public:
-  EventAction();//const G4int& modulo);
+  EventAction();
   ~EventAction();
   
   void BeginOfEventAction(const G4Event*);

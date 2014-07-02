@@ -1,4 +1,4 @@
-The system is: Linux - 2.6.32-431.17.1.el6.x86_64 - x86_64
+The system is: Linux - 2.6.32-431.20.3.el6.x86_64 - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /afs/cern.ch/sw/lcg/contrib/gcc/4.6.3/x86_64-slc6-gcc46-opt/bin/gcc 
 Build flags: 

@@ -12,7 +12,7 @@ class G4Event;
 class EventAction : public G4UserEventAction
 {
 public:
-  EventAction(const G4int& modulo);
+  EventAction();//const G4int& modulo);
   ~EventAction();
   
   void BeginOfEventAction(const G4Event*);

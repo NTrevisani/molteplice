@@ -42,6 +42,7 @@
 #ifndef ExN01PhysicsList_h
 #define ExN01PhysicsList_h 1
 
+#include "G4VPhysicsConstructor.hh"
 #include "G4VUserPhysicsList.hh"
 #include "globals.hh"
 
@@ -70,7 +71,11 @@ class ExN01PhysicsList: public G4VUserPhysicsList
     // these methods Construct physics processes and register them
     void ConstructGeneral();
     void ConstructEM();
-
+    void ConstructOp();
+/*
+  private:
+  G4Cerenkov * theCerenkovProcess;
+*/   
 };
 
 

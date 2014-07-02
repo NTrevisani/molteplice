@@ -34,6 +34,12 @@
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "G4ThreeVector.hh"
 #include "globals.hh"
+#include "ExN01RandomGenerator.hh"
+
+//#include "ExN01RandomGenerator.hh"
+
+//ExN01RandomGenerator *randomizer = new ExN01RandomGenerator("profile_beam.root");
+
 
 class G4ParticleGun;
 class G4Event;
@@ -41,8 +47,13 @@ class G4Event;
 class ExG4PrimaryGeneratorAction01 : public G4VUserPrimaryGeneratorAction
 {
   public:
-    ExG4PrimaryGeneratorAction01(const G4String& particleName = "e-",G4double energy = 491.*MeV,G4ThreeVector position= G4ThreeVector(0.1,0.1,0.),
+    /*
+    ExG4PrimaryGeneratorAction01(const G4String& particleName = "e-",G4double energy = 491.*MeV,
+      G4ThreeVector position = G4ThreeVector(0.,0.,0.), //= G4ThreeVector(posx*mm, posy*mm, 0.),
       G4ThreeVector momentumDirection = G4ThreeVector(0,0,1));    
+    */
+    //ExG4PrimaryGeneratorAction01(const G4String& particleName, G4double energy, G4ThreeVector position, G4ThreeVector momentumDirection);
+    ExG4PrimaryGeneratorAction01(std::string call);
     ~ExG4PrimaryGeneratorAction01();
 
     // methods
@@ -50,6 +61,7 @@ class ExG4PrimaryGeneratorAction01 : public G4VUserPrimaryGeneratorAction
 
   private:
     // data members
+    ExN01RandomGenerator *rand_;
     G4ParticleGun*  fParticleGun; //pointer a to G4 service class
 };
 

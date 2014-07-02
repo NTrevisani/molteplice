@@ -35,21 +35,15 @@
 #include "G4ParticleTable.hh"
 #include "G4ParticleDefinition.hh"
 
+#include "ExN01RandomGenerator.hh"
+          
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-ExG4PrimaryGeneratorAction01::ExG4PrimaryGeneratorAction01(const G4String& particleName,G4double energy,G4ThreeVector position,G4ThreeVector momentumDirection)
-  : G4VUserPrimaryGeneratorAction(),fParticleGun(0)
+ExG4PrimaryGeneratorAction01::ExG4PrimaryGeneratorAction01(std::string call) : G4VUserPrimaryGeneratorAction(),fParticleGun(0)
 {
   G4int nofParticles = 1;
   fParticleGun  = new G4ParticleGun(nofParticles);
-
-  // default particle kinematic
-  G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
-  G4ParticleDefinition* particle = particleTable->FindParticle(particleName);
-  fParticleGun->SetParticleDefinition(particle);
-  fParticleGun->SetParticleEnergy(energy);
-  fParticleGun->SetParticlePosition(position);
-  fParticleGun->SetParticleMomentumDirection(momentumDirection);
+    rand_ = new ExN01RandomGenerator(call);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -63,10 +57,25 @@ ExG4PrimaryGeneratorAction01::~ExG4PrimaryGeneratorAction01()
 
 void ExG4PrimaryGeneratorAction01::GeneratePrimaries(G4Event* anEvent)
 {
-  // this function is called at the begining of event
+  G4double posx = rand_->X()*mm;
+  G4double posy = rand_->Y()*mm;
 
+  // default particle kinematic
+  const G4String& particleName = "e-";
+  G4double energy;
+  G4ThreeVector position(posx,posy,-10.*cm);
+  G4ThreeVector momentumDirection(0.,0.,1.);
+  
+  G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
+  G4ParticleDefinition* particle = particleTable->FindParticle(particleName);
+  fParticleGun->SetParticleDefinition(particle);
+  fParticleGun->SetParticleEnergy(energy = 491.*MeV);
+  fParticleGun->SetParticlePosition(position);
+  fParticleGun->SetParticleMomentumDirection(momentumDirection);
+
+
+  // this function is called at the begining of event
   fParticleGun->GeneratePrimaryVertex(anEvent);
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

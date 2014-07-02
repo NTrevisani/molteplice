@@ -61,6 +61,7 @@
 #include "G4ParticleTable.hh"
 #include "G4ios.hh"              
 
+//#include "G4Cerenkov.hh"
 
 ExN01PhysicsList::ExN01PhysicsList():  G4VUserPhysicsList()
 {
@@ -134,11 +135,34 @@ void ExN01PhysicsList::ConstructBaryons()
 }
 
 void ExN01PhysicsList::ConstructProcess()
-{
+{ 
   AddTransportation();
   ConstructEM();
 }
+/*
+void ExN01PhysicsList::ConstructOp()
+{
 
+  G4Cerenkov*   theCerenkovProcess = new G4Cerenkov("Cerenkov");
+
+  G4int MaxNumPhotons = 300;
+
+  theCerenkovProcess->SetTrackSecondariesFirst(true);
+  theCerenkovProcess->SetMaxNumPhotonsPerStep(MaxNumPhotons);
+
+  theParticleIterator->reset();
+  while( (*theParticleIterator)() )
+    {
+    G4ParticleDefinition* particle = theParticleIterator->value();
+    G4ProcessManager* pmanager = particle->GetProcessManager();
+    G4String particleName = particle->GetParticleName();
+    if (theCerenkovProcess->IsApplicable(*particle)) 
+        {
+        pmanager->AddContinuousProcess(theCerenkovProcess);
+        }
+    }
+}
+*/
 #include "G4ComptonScattering.hh"
 #include "G4GammaConversion.hh"
 #include "G4PhotoElectricEffect.hh"

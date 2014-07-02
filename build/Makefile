@@ -309,6 +309,30 @@ src/ExN01PrimaryGeneratorAction.cc.s:
 	$(MAKE) -f CMakeFiles/molteplice.dir/build.make CMakeFiles/molteplice.dir/src/ExN01PrimaryGeneratorAction.cc.s
 .PHONY : src/ExN01PrimaryGeneratorAction.cc.s
 
+src/ExN01RandomGenerator.o: src/ExN01RandomGenerator.cc.o
+.PHONY : src/ExN01RandomGenerator.o
+
+# target to build an object file
+src/ExN01RandomGenerator.cc.o:
+	$(MAKE) -f CMakeFiles/molteplice.dir/build.make CMakeFiles/molteplice.dir/src/ExN01RandomGenerator.cc.o
+.PHONY : src/ExN01RandomGenerator.cc.o
+
+src/ExN01RandomGenerator.i: src/ExN01RandomGenerator.cc.i
+.PHONY : src/ExN01RandomGenerator.i
+
+# target to preprocess a source file
+src/ExN01RandomGenerator.cc.i:
+	$(MAKE) -f CMakeFiles/molteplice.dir/build.make CMakeFiles/molteplice.dir/src/ExN01RandomGenerator.cc.i
+.PHONY : src/ExN01RandomGenerator.cc.i
+
+src/ExN01RandomGenerator.s: src/ExN01RandomGenerator.cc.s
+.PHONY : src/ExN01RandomGenerator.s
+
+# target to generate assembly for a file
+src/ExN01RandomGenerator.cc.s:
+	$(MAKE) -f CMakeFiles/molteplice.dir/build.make CMakeFiles/molteplice.dir/src/ExN01RandomGenerator.cc.s
+.PHONY : src/ExN01RandomGenerator.cc.s
+
 src/ExN01SteppingAction.o: src/ExN01SteppingAction.cc.o
 .PHONY : src/ExN01SteppingAction.o
 
@@ -357,6 +381,54 @@ src/ExN01VisAction.cc.s:
 	$(MAKE) -f CMakeFiles/molteplice.dir/build.make CMakeFiles/molteplice.dir/src/ExN01VisAction.cc.s
 .PHONY : src/ExN01VisAction.cc.s
 
+src/ExN06PhysicsList.o: src/ExN06PhysicsList.cc.o
+.PHONY : src/ExN06PhysicsList.o
+
+# target to build an object file
+src/ExN06PhysicsList.cc.o:
+	$(MAKE) -f CMakeFiles/molteplice.dir/build.make CMakeFiles/molteplice.dir/src/ExN06PhysicsList.cc.o
+.PHONY : src/ExN06PhysicsList.cc.o
+
+src/ExN06PhysicsList.i: src/ExN06PhysicsList.cc.i
+.PHONY : src/ExN06PhysicsList.i
+
+# target to preprocess a source file
+src/ExN06PhysicsList.cc.i:
+	$(MAKE) -f CMakeFiles/molteplice.dir/build.make CMakeFiles/molteplice.dir/src/ExN06PhysicsList.cc.i
+.PHONY : src/ExN06PhysicsList.cc.i
+
+src/ExN06PhysicsList.s: src/ExN06PhysicsList.cc.s
+.PHONY : src/ExN06PhysicsList.s
+
+# target to generate assembly for a file
+src/ExN06PhysicsList.cc.s:
+	$(MAKE) -f CMakeFiles/molteplice.dir/build.make CMakeFiles/molteplice.dir/src/ExN06PhysicsList.cc.s
+.PHONY : src/ExN06PhysicsList.cc.s
+
+src/G4EmUserPhysics.o: src/G4EmUserPhysics.cc.o
+.PHONY : src/G4EmUserPhysics.o
+
+# target to build an object file
+src/G4EmUserPhysics.cc.o:
+	$(MAKE) -f CMakeFiles/molteplice.dir/build.make CMakeFiles/molteplice.dir/src/G4EmUserPhysics.cc.o
+.PHONY : src/G4EmUserPhysics.cc.o
+
+src/G4EmUserPhysics.i: src/G4EmUserPhysics.cc.i
+.PHONY : src/G4EmUserPhysics.i
+
+# target to preprocess a source file
+src/G4EmUserPhysics.cc.i:
+	$(MAKE) -f CMakeFiles/molteplice.dir/build.make CMakeFiles/molteplice.dir/src/G4EmUserPhysics.cc.i
+.PHONY : src/G4EmUserPhysics.cc.i
+
+src/G4EmUserPhysics.s: src/G4EmUserPhysics.cc.s
+.PHONY : src/G4EmUserPhysics.s
+
+# target to generate assembly for a file
+src/G4EmUserPhysics.cc.s:
+	$(MAKE) -f CMakeFiles/molteplice.dir/build.make CMakeFiles/molteplice.dir/src/G4EmUserPhysics.cc.s
+.PHONY : src/G4EmUserPhysics.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -389,12 +461,21 @@ help:
 	@echo "... src/ExN01PrimaryGeneratorAction.o"
 	@echo "... src/ExN01PrimaryGeneratorAction.i"
 	@echo "... src/ExN01PrimaryGeneratorAction.s"
+	@echo "... src/ExN01RandomGenerator.o"
+	@echo "... src/ExN01RandomGenerator.i"
+	@echo "... src/ExN01RandomGenerator.s"
 	@echo "... src/ExN01SteppingAction.o"
 	@echo "... src/ExN01SteppingAction.i"
 	@echo "... src/ExN01SteppingAction.s"
 	@echo "... src/ExN01VisAction.o"
 	@echo "... src/ExN01VisAction.i"
 	@echo "... src/ExN01VisAction.s"
+	@echo "... src/ExN06PhysicsList.o"
+	@echo "... src/ExN06PhysicsList.i"
+	@echo "... src/ExN06PhysicsList.s"
+	@echo "... src/G4EmUserPhysics.o"
+	@echo "... src/G4EmUserPhysics.i"
+	@echo "... src/G4EmUserPhysics.s"
 .PHONY : help
 
 

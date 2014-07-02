@@ -28,9 +28,7 @@ public:
   
   TTree*             GetTree  () const { return ftree ; } ;
   TString            GetName  () const { return fname ; } ;
-//  void               AddEnergyDeposit (int index, float deposit, std::map<int,float>& depositAtt) ;
-//  void               AddScintillationPhoton (int index) ;
-//  void               AddCerenkovPhoton (int index) ;
+
   int                Fill     () ;
   void               Write    (TFile *) ;
   void               Clear    () ;
@@ -38,90 +36,50 @@ public:
   static CreateTree* fInstance ;
   
   int   Event ;
-/* 
-  std::vector<float> * inputMomentum ; // Px Py Pz E
-  std::vector<float> * inputInitialPosition ; // x, y, z
-*/
 
-  int number;
-
-  float depositedEnergyTotal_0 ;
-  std::vector<float> * depositedEnergies_0 ;
-
-  float depositedEnergyTotal_3 ;
-  std::vector<float> * depositedEnergies_3 ;
+  std::vector<int> *ID;
+  std::vector<float> *position_0;
   
-  float depositedEnergyTotal_10 ;
-  std::vector<float> * depositedEnergies_10 ;
+  int number_0;
+  int NumberEscaped_0;
+  int number_0_out;  
+  float EnergyTotal_0 ;
+  float EnergyTotal_0_all ; //count also neutral particles (photons)
+  std::vector<float> * Energies_0 ;
+  float TrackLenght_0 ;
+  float StepLenght_0 ;  
   
-  float depositedEnergyTotal_30 ;
-  std::vector<float> * depositedEnergies_30 ;
-  
-  float depositedEnergyTotal_100 ;
-  std::vector<float> * depositedEnergies_100 ;
-  
-   
-/* 
-  float depositedEnergyFibres ;
-  float depositedEnergyAbsorber ;
-  float depositedEnergySide ;
-  float depositedEnergyPost ;
-  float depositedEnergyWorld ;
-  std::vector<float> * depositedEnergyFibresAtt ;
-  
-  float totalTrackLengthFibres ;
-  float totalTrackLengthOverThFibres ;
-  
-  int tot_phot_cer;
-  int tot_gap_phot_cer;
-  int tot_det_phot_cer;
-  std::vector<float> * tot_gap_photFast_cer;
-  std::vector<float> * tot_det_photFast_cer;
-  
-  // energy deposited in each fibre of a tower
-  std::vector<float> * depositedEnergies ;
-  std::vector<std::vector<float> > * depositedEnergiesAtt ;
-  // index of the fibre where the deposit happens
-  std::vector<int> * depositFibres ; 
-  
-  // scintillation photons produced in each fibre of a tower
-  std::vector<int> * scintillationPhotons ;
-  // index of the fibre where the deposit happens
-  std::vector<int> * scintillationFibres ; 
-  
-  // cerenkov photons produced in each fibre of a tower
-  std::vector<int> * cerenkovPhotons ;
-  // index of the fibre where the deposit happens
-  std::vector<int> * cerenkovFibres ; 
-  
-  float Radial_stepLength;
-  float Longitudinal_stepLength;
-  float Radial_ion_energy_absorber[5000];
-  float Longitudinal_ion_energy_absorber[5000];
-  
-  float PrimaryParticleX[1000];
-  float PrimaryParticleY[1000];
-  float PrimaryParticleZ[1000];
-  float PrimaryParticleE[1000];
-  
-  // histograms
-  //TH1F* h_phot_cer_lambda;
-  //TH1F* h_phot_cer_E;
-  //TH1F* h_phot_cer_time;
-  
-  //TH1F* h_phot_cer_gap_lambda;
-  //TH1F* h_phot_cer_gap_E;
-  //TH1F* h_phot_cer_gap_time;
-  
-  //std::vector<TH1F*> h_photFast_cer_gap_lambda;
-  //std::vector<TH1F*> h_photFast_cer_gap_E;
-  //std::vector<TH1F*> h_photFast_cer_gap_time;
-*/  
-  // to be filled at the beginning of the event generation only
-  //TNtuple * fibresPosition ;
-  //TTree * attenuationLengths ;
-  
-  //std::vector<float> * attLengths;
+  int number_3;
+  int number_3_out;
+  float EnergyTotal_3 ;
+  float EnergyTotal_3_all ;
+  std::vector<float> * Energies_3 ;
+  float TrackLenght_3 ;
+  float StepLenght_3 ;  
+    
+  int number_10;
+  int number_10_out;    
+  float EnergyTotal_10 ;
+  float EnergyTotal_10_all ;
+  std::vector<float> * Energies_10 ;
+  float TrackLenght_10 ;
+  float StepLenght_10 ;  
+      
+  int number_30;
+  int number_30_out;    
+  float EnergyTotal_30 ;
+  float EnergyTotal_30_all ;
+  std::vector<float> * Energies_30 ;
+  float TrackLenght_30 ;
+  float StepLenght_30 ;  
+      
+  int number_100;
+  int number_100_out;    
+  float EnergyTotal_100 ;
+  float EnergyTotal_100_all ;
+  std::vector<float> * Energies_100 ;
+  float TrackLenght_100 ;
+  float StepLenght_100 ;    
 } ;
 
 #endif

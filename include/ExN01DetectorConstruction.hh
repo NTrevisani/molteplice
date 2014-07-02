@@ -51,13 +51,17 @@ class ExN01DetectorConstruction : public G4VUserDetectorConstruction
     //
     G4LogicalVolume* worldLog;
     G4LogicalVolume* absLog;
-    G4LogicalVolume* detLog;    
-
+    G4LogicalVolume* detLog;
+    G4LogicalVolume* outLog;        
+    G4LogicalVolume* mcpLog;        
+    
     // Physical volumes
     //
     G4VPhysicalVolume* worldPhys;
     G4VPhysicalVolume* absPhys;
     G4VPhysicalVolume* detPhys;    
+    G4VPhysicalVolume* outPhys;        
+    G4VPhysicalVolume* mcpPhys;            
 };
 
 #endif

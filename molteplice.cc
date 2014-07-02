@@ -32,9 +32,12 @@
 //      GEANT 4 - exampleN01
 // --------------------------------------------------------------
 
+//#include "G4EmUserPhysics.hh"
+
 #include "ExN01EventAction.hh"
 #include "ExN01CreateTree.hh"
 
+#include <string>
 #include <vector>
 #include <map>
 #include "B4Analysis.hh"
@@ -42,13 +45,14 @@
 #include "G4RunManager.hh"
 #include "G4UImanager.hh"
 
-//#include "TCint.h"
-
 #include "ExN01DetectorConstruction.hh"
 #include "ExN01PhysicsList.hh"
 #include "ExN01PrimaryGeneratorAction.hh"
 
 #include "ExN01SteppingAction.hh"
+
+#include "ExN01RandomGenerator.hh"
+
 
 #ifdef G4VIS_USE
 #include "G4VisExecutive.hh"
@@ -75,86 +79,56 @@ int main(int argc,char** argv)
   G4VUserPhysicsList* physics = new ExN01PhysicsList;
   runManager->SetUserInitialization(physics);
 
-  
-/*
-//GRAFICA - PRIMA INSERZIONE
-  #ifdef G4VIS_USE
-  // Visualization, if you choose to have it!
-  G4VisManager* visManager = new G4VisExecutive;
-  visManager->Initialize();
-  // Set User Vis Action...
-  visManager->SetUserAction
-    (new UVA_VisAction, G4VisExtent(-1*m,1*m,-2*m,0,3.5*m,5.5*m));
-  // 2nd argument optional - overridden by /vis/scene/add/userAction
-  // arguments, if any.
-  #endif
-//**************************
-*/
-     
   // set mandatory user action class
-  //
-  G4VUserPrimaryGeneratorAction* gen_action = new ExG4PrimaryGeneratorAction01;
+  
+
+  std::string name = ("/afs/cern.ch/user/g/govoni/work/NICOLO/geant4/molteplice/profile_beam.root");
+  G4VUserPrimaryGeneratorAction* gen_action = new ExG4PrimaryGeneratorAction01(name);
   runManager->SetUserAction(gen_action);
 
-//  int cont = 0;
-
-  // Create analysis manager
-  //G4AnalysisManager* man = G4AnalysisManager::Instance();
-	
-  // Creating histogram 
-  //man->CreateH1("1","Energy Left", 500, 0., 500*MeV);
-
   //Creating Tree
-    CreateTree* mytree = new CreateTree ("tree") ;  
-    //CreateTree::Instance() -> attenuationLengths -> Fill();
- 
- 
+    CreateTree* mytree = new CreateTree ("tree") ; 
 
-//G4cout << ">>> Define EventAction::begin <<<" << G4endl;
-  G4UserEventAction* event_action = new EventAction();//printModulo);
+  G4UserEventAction* event_action = new EventAction();
   runManager->SetUserAction(event_action);
-//  G4cout << ">>> Define EventAction::end <<<" << G4endl; 
 
     
   G4UserSteppingAction* stpAct = new SteppingAction();
   runManager->SetUserAction(stpAct);
   
-      std::cout<<"sono qui!!!!!! :) :) :) :) :) :)"<<std::endl;
-  
-  
-  // Initialize G4 kernel
-  //
   runManager->Initialize();
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*
-//GRAFICA - SECONDA INSERZIONE
-  //get the pointer to the User Interface manager 
-  G4UImanager * UImanager = G4UImanager::GetUIpointer();  
-
-  if(argc==1)
-#ifdef G4UI_USE
-  // Define (G)UI terminal for interactive mode  
-  { 
-    G4UIExecutive * ui = new G4UIExecutive(argc, argv);
-    UImanager->ApplyCommand("/control/execute vis.mac");    
-    ui->SessionStart();
-    delete ui;
+#ifdef G4VIS_USE
+  // Initialize visualization                                                                                                                               
+  G4VisManager* visManager = new G4VisExecutive;
+  // G4VisExecutive can take a verbosity argument - see /vis/verbose guidance.                                                                              
+  // G4VisManager* visManager = new G4VisExecutive("Quiet");                                                                                                
+  visManager->Initialize();
 #endif
-  }
-  else
-  // Batch mode
-  { 
+  // Get the pointer to the User Interface manager                                                                                                          
+  G4UImanager* UImanager = G4UImanager::GetUIpointer();
+  if (argc!=1) {
+    // batch mode                                                                                                                                           
     G4String command = "/control/execute ";
     G4String fileName = argv[1];
     UImanager->ApplyCommand(command+fileName);
   }
-
-  #ifdef G4VIS_USE
+  else{
+    // interactive mode : define UI session                                                                                                                 
+#ifdef G4UI_USE
+    G4UIExecutive* ui = new G4UIExecutive(argc, argv);
+#ifdef G4VIS_USE
+    UImanager->ApplyCommand("/control/execute vis.mac");
+#endif
+    ui->SessionStart();
+    delete ui;
+#endif
+  }
+#ifdef G4VIS_USE
   delete visManager;
-  #endif
-
-//***********************************
-*/
+#endif
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // Get the pointer to the UI manager and set verbosities
   //
@@ -166,6 +140,7 @@ int main(int argc,char** argv)
 
   // Start a run
   //
+
   G4int numberOfEvent = 15000;
   runManager->BeamOn(numberOfEvent);
 
